@@ -1,4 +1,4 @@
-# :ramen: miso-simple
+# :ramen: 💯 miso-counter
 
 ## Build and run
 
