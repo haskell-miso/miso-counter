@@ -1,5 +1,6 @@
 -----------------------------------------------------------------------------
 {-# LANGUAGE CPP               #-}
+{-# LANGUAGE LambdaCase        #-}
 {-# LANGUAGE OverloadedStrings #-}
 -----------------------------------------------------------------------------
 module Main where
@@ -42,14 +43,15 @@ app = (component (Model 0) updateModel viewModel)
   }
 -----------------------------------------------------------------------------
 updateModel :: Action -> Transition Model Action
-updateModel (AddOne event) = do
-  value += 1
-  io_ $ consoleLog (ms (show event))
-updateModel (SubtractOne event) = do
-  value -= 1
-  io_ $ consoleLog (ms (show event))
-updateModel SayHelloWorld =
-  io_ (consoleLog "Hello World!")
+updateModel = \case
+  AddOne event -> do
+    value += 1
+    io_ $ consoleLog (ms (show event))
+  SubtractOne event -> do
+    value -= 1
+    io_ $ consoleLog (ms (show event))
+  SayHelloWorld ->
+    io_ (consoleLog "Hello World!")
 -----------------------------------------------------------------------------
 viewModel :: Model -> View Model Action
 viewModel x = H.div_
