@@ -42,7 +42,7 @@ app = (component (Model 0) updateModel viewModel)
   , styles = [ Sheet sheet ]
   }
 -----------------------------------------------------------------------------
-updateModel :: Action -> Transition Model Action
+updateModel :: Action -> Effect ROOT Model Action
 updateModel = \case
   AddOne event -> do
     value += 1
