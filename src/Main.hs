@@ -34,12 +34,11 @@ foreign export javascript "hs_start" main :: IO ()
 #endif
 -----------------------------------------------------------------------------
 main :: IO ()
-main = run $ startApp app
+main = startApp pointerEvents app
 -----------------------------------------------------------------------------
 app :: App Model Action
 app = (component (Model 0) updateModel viewModel)
-  { events = pointerEvents
-  , styles = [ Sheet sheet ]
+  { styles = [ Sheet sheet ]
   }
 -----------------------------------------------------------------------------
 updateModel :: Action -> Effect ROOT Model Action
